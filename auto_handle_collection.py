@@ -21,21 +21,21 @@ tweepy_api = tweepy.API(tweepy_auth)
 
 
 def main():
-    with open("idlist_shinjyuku.txt", "r") as f:
-        tweet_ids = list(map(lambda s: int(s), f.read().splitlines()))
-    # tweet_ids = get_tweets("新宿 from:meteorite_0825")
+    # with open("idlist_shinjyuku.txt", "r") as f:
+    #     tweet_ids = list(map(lambda s: int(s), f.read().splitlines()))
+    tweet_ids = get_tweets("渋谷 from:meteorite_0825","idlist_shibuya.txt")
     tweet_ids.sort()
     res = add_collection(tweet_ids, MY_SHINJYUKU_COLLECTION_ID)
     print(res)
 
 
 # 取得したツイートを配列に格納する関数
-def get_tweets(query):
+def get_tweets(query,filename):
     tweet_ids = []
     tweets = tweepy_api.search_full_archive(
         label="full", query=query, fromDate="200701012315"
     )
-    with open("idlist_shinjyuku.txt", "w") as f:
+    with open(filename, "w") as f:
         for tweet in tweets:
             tweet_ids.append(tweet.id)
             print(tweet.id, file=f)
