@@ -31,9 +31,9 @@ tweepy_api = tweepy.API(tweepy_auth)
 def main():
     # with open("idlist_shinjyuku.txt", "r") as f:
     #     tweet_ids = list(map(lambda s: int(s), f.read().splitlines()))
-    tweet_ids = get_tweets("横浜 from:meteorite_0825", "idlist_yokohama.txt")
+    tweet_ids = get_tweets("大阪 from:meteorite_0825", "idlist_osaka.txt")
     tweet_ids.sort()
-    res = add_collection(tweet_ids, MY_YOKOHAMA_COLLECTION_ID)
+    res = add_collection(tweet_ids, MY_OSAKA_COLLECTION_ID)
     print(res)
 
 
